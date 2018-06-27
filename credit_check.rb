@@ -26,11 +26,9 @@ end
 #adds all array elements together, returns total
 def sum_array_elements(array)
   total = 0
-
   array.each do |item|
     total = total + item
   end
-
   return total
 end
 
@@ -42,30 +40,15 @@ end
 
 char_array = card_number.chars
 
-print char_array
-puts "\n"
-
 card_number_array = char_to_int(char_array)
-
-print card_number_array
-puts "\n"
 
 card_number_array = double_even_indexes(card_number_array)
 
-print card_number_array
-puts "\n"
-
 card_number_array = sum_digits_over_ten(card_number_array)
-
-print card_number_array
-puts "\n"
 
 total = sum_array_elements(card_number_array)
 
 valid = is_valid(total)
-
-
-puts total
 
 if valid
   puts "The number is valid!"
