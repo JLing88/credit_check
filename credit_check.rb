@@ -1,4 +1,4 @@
-card_number = "4024007136512380"
+card_number = "6011797668868728"
 
 #changes char array to int array
 def char_to_int(array)
@@ -35,16 +35,37 @@ def sum_array_elements(array)
 end
 
 def is_valid(total)
-  if total % 2 == 0
+  if total % 10 == 0
     return true
   end
 end
 
 char_array = card_number.chars
+
+print char_array
+puts "\n"
+
 card_number_array = char_to_int(char_array)
+
+print card_number_array
+puts "\n"
+
+card_number_array = double_even_indexes(card_number_array)
+
+print card_number_array
+puts "\n"
+
 card_number_array = sum_digits_over_ten(card_number_array)
+
+print card_number_array
+puts "\n"
+
 total = sum_array_elements(card_number_array)
+
 valid = is_valid(total)
+
+
+puts total
 
 if valid
   puts "The number is valid!"
