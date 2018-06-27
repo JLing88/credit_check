@@ -32,12 +32,14 @@ def sum_array_elements(array)
   return total
 end
 
+#if total is divisible by 10, returns true
 def is_valid(total)
   if total % 10 == 0
     return true
   end
 end
 
+#prints to terminal
 def print_valid(valid)
   if valid
     puts "The number is valid!"
