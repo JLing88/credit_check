@@ -17,7 +17,7 @@ class CreditCheck
     end
   end
 
-  def sum_digits_over_ten(array)
+  def sum_digits_over_nine(array)
     array.each_with_index do |item, index|
       if item > 9
         array[index] = item - 9
@@ -54,7 +54,7 @@ class CreditCheck
   def valid_number?(card_number)
     integer_array = integer_to_array(card_number)
     integer_array = double_odd_indexes(integer_array)
-    integer_array = sum_digits_over_ten(integer_array)
+    integer_array = sum_digits_over_nine(integer_array)
     total = sum_array_elements(integer_array)
     return divisible_by_ten(total)
   end
