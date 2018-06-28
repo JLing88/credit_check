@@ -5,7 +5,7 @@ class CreditCheck
     @card_number
   end
 
-  def integer_to_array(card_number)
+  def integer_to_array_and_reverse(card_number)
     return integer_array = card_number.digits
   end
 
@@ -29,14 +29,29 @@ class CreditCheck
   def sum_array_elements(array)
     total = 0
     array.each do |item|
-      total = total + item
+      total += item
     end
     return total
-    puts total
   end
 
   def divisible_by_ten(total)
     if total % 10 == 0
+      return true
+    else
+      return false
+    end
+  end
+
+  def luhn_algorithm?(card_number)
+    card_number_array = integer_to_array_and_reverse(card_number)
+    card_number_array = double_odd_indexes(card_number_array)
+    card_number_array = sum_digits_over_nine(card_number_array)
+    total = sum_array_elements(card_number_array)
+    return divisible_by_ten(total)
+  end
+
+  def valid_number?(card_number)
+    if luhn_algorithm
       return true
     else
       return false
@@ -51,11 +66,4 @@ class CreditCheck
     end
   end
 
-  def valid_number?(card_number)
-    integer_array = integer_to_array(card_number)
-    integer_array = double_odd_indexes(integer_array)
-    integer_array = sum_digits_over_nine(integer_array)
-    total = sum_array_elements(integer_array)
-    return divisible_by_ten(total)
-  end
 end
