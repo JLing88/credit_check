@@ -66,4 +66,15 @@ class CreditCheck
     end
   end
 
+  def get_check_digit(card_number)
+    card_number_array = integer_to_array_and_reverse(card_number)
+    card_number_array = double_odd_indexes(card_number_array)
+    card_number_array = sum_digits_over_nine(card_number_array)
+    total = sum_array_elements(card_number_array)
+    unit_array = total.digits
+    check_digit = unit_array[0]
+    return check_digit
+
+  end
+
 end
