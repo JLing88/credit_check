@@ -40,10 +40,10 @@ class CreditCheckTest < Minitest::Test
     assert tester.divisible_by_ten(100)
   end
 
-  def test_luhn_algorithm
+  def test_luhn_algorithm?
     valid_tester = CreditCheck.new
     invalid_tester = CreditCheck.new
-    assert valid_tester.luhn_algorithm(5541808923795240)
-    refute invalid_tester.luhn_algorithm(5541801923795240)
+    assert valid_tester.luhn_algorithm?(5541808923795240)
+    refute invalid_tester.luhn_algorithm?(5541801923795240)
   end
 end
