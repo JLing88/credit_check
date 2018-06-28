@@ -1,63 +1,61 @@
-card_number = "4024007136512380"
 
-#changes char array to int array
-def char_to_int(array)
-  array.map { |item| item.to_i  }
-end
+class CreditCheck
 
-#doubles even number indexes in a number array
-def double_even_indexes(number_array)
-  number_array.each_with_index do |item, index|
-    if index.even?
-      number_array[index] = item * 2
+  def initialize
+    @card_number
+  end
+
+  def integer_to_array(card_number)
+    return integer_array = card_number.digits
+  end
+
+  def double_even_indexes(array)
+    array.each_with_index do |item, index|
+      if index.odd?
+        array[index] = item * 2
+      end
     end
   end
-end
 
-#if digits in array are greater than 9, adds digits together
-def sum_digits_over_ten(number_array)
-  number_array.each_with_index do |item, index|
-    if item > 9
-      number_array[index] = (item - 10) + 1
+  def sum_digits_over_ten(array)
+    array.each_with_index do |item, index|
+      if item > 9
+        array[index] = item - 9
+      end
+    end
+    return array
+  end
+
+  def sum_array_elements(array)
+    total = 0
+    array.each do |item|
+      total = total + item
+    end
+    return total
+    puts total
+  end
+
+  def divisible_by_ten(total)
+    if total % 10 == 0
+      return true
+    else
+      return false
     end
   end
-end
 
-#adds all array elements together, returns total
-def sum_array_elements(array)
-  total = 0
-  array.each do |item|
-    total = total + item
+  def validation_output(card_number)
+    if valid_number?(card_number)
+      puts "The number is valid!"
+    else
+      puts "The number is invalid!"
+    end
   end
-  return total
-end
 
-#if total is divisible by 10, returns true
-def is_valid(total)
-  if total % 10 == 0
-    return true
-  end
-end
-
-#prints to terminal
-def print_valid(valid)
-  if valid
-    puts "The number is valid!"
-  else
-    puts "The number is invalid!"
+  def valid_number?(card_number)
+    integer_array = integer_to_array(card_number)
+    integer_array = double_even_indexes(integer_array)
+    integer_array = sum_digits_over_ten(integer_array)
+    total = sum_array_elements(integer_array)
+    return divisible_by_ten(total)
   end
 end
-
-char_array = card_number.chars
-
-card_number_array = char_to_int(char_array)
-
-card_number_array = double_even_indexes(card_number_array)
-
-card_number_array = sum_digits_over_ten(card_number_array)
-
-total = sum_array_elements(card_number_array)
-
-valid = is_valid(total)
-
-print_valid(valid)
