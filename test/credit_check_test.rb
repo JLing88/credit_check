@@ -8,10 +8,10 @@ class CreditCheckTest < Minitest::Test
     assert_instance_of CreditCheck, credit_check
   end
 
-  def test_integer_to_array_and_reverse
+  def test_integer_to_array_reversed
     credit_check = CreditCheck.new
     assert_equal [0, 4, 2, 5, 9, 7, 3, 2, 9, 1, 0, 8, 1, 4, 5, 5],
-      credit_check.integer_to_array_and_reverse(5541801923795240)
+      credit_check.integer_to_array_reversed(5541801923795240)
   end
 
   def test_double_odd_indexes
@@ -48,6 +48,6 @@ class CreditCheckTest < Minitest::Test
 
   def test_get_check_digit
     tester = CreditCheck.new
-    assert 0, tester.get_check_digit(5541801923795240) 
+    assert 0, tester.get_check_digit(5541801923795240)
   end
 end

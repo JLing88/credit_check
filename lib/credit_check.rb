@@ -1,11 +1,18 @@
 
 class CreditCheck
 
+  attr_accessor :card_number
+
   def initialize
     @card_number
   end
 
-  def integer_to_array_and_reverse(card_number)
+  def string_to_integer_array_reversed(string)
+    integer = string.to_i
+    integer.digits
+  end
+
+  def integer_to_array_reversed(card_number)
     return integer_array = card_number.digits
   end
 
@@ -43,7 +50,7 @@ class CreditCheck
   end
 
   def luhn_algorithm?(card_number)
-    card_number_array = integer_to_array_and_reverse(card_number)
+    card_number_array = integer_to_array_reversed(card_number)
     card_number_array = double_odd_indexes(card_number_array)
     card_number_array = sum_digits_over_nine(card_number_array)
     total = sum_array_elements(card_number_array)
@@ -51,7 +58,7 @@ class CreditCheck
   end
 
   def valid_number?(card_number)
-    if luhn_algorithm
+    if luhn_algorithm?(card_number)
       return true
     else
       return false
@@ -67,7 +74,7 @@ class CreditCheck
   end
 
   def get_check_digit(card_number)
-    card_number_array = integer_to_array_and_reverse(card_number)
+    card_number_array = integer_to_array_reversed(card_number)
     card_number_array = double_odd_indexes(card_number_array)
     card_number_array = sum_digits_over_nine(card_number_array)
     total = sum_array_elements(card_number_array)
