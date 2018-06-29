@@ -24,7 +24,6 @@ class CreditCheckTest < Minitest::Test
     tester = CreditCheck.new
     array = [2, 10, 16, 4, 18, 6]
     assert_equal tester.sum_digits_over_nine(array), [2, 1, 7, 4, 9, 6]
-
   end
 
   def test_sum_array_elements
@@ -45,5 +44,10 @@ class CreditCheckTest < Minitest::Test
     invalid_tester = CreditCheck.new
     assert valid_tester.luhn_algorithm?(5541808923795240)
     refute invalid_tester.luhn_algorithm?(5541801923795240)
+  end
+
+  def test_get_check_digit
+    tester = CreditCheck.new
+    assert 0, tester.get_check_digit(5541801923795240) 
   end
 end
